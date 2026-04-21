@@ -1,4 +1,3 @@
-
 import httpx
 
 from a2a.client import A2ACardResolver, ClientConfig, create_client
