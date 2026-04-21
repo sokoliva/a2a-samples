@@ -59,6 +59,8 @@ async def main() -> None:
             print(chunk)
         # --8<-- [end:message_stream]
 
+        await streaming_client.close()
+
         print('\n--- Extended Card Call ---')
         extended_card = await client.get_extended_agent_card(
             GetExtendedAgentCardRequest()
