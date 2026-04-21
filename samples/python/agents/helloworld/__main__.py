@@ -42,7 +42,7 @@ if __name__ == '__main__':
     public_agent_card = AgentCard(
         name='Hello World Agent',
         description='Just a hello world agent',
-        version='1.0',
+        version='0.0.1',
         default_input_modes=['text/plain'],
         default_output_modes=['text/plain'],
         capabilities=AgentCapabilities(
@@ -63,7 +63,7 @@ if __name__ == '__main__':
     extended_agent_card = AgentCard(
         name='Hello World Agent - Extended Edition',
         description='The full-featured hello world agent for authenticated users.',
-        version='1.0',
+        version='0.0.2',
         default_input_modes=['text/plain'],
         default_output_modes=['text/plain'],
         capabilities=AgentCapabilities(
