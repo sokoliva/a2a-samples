@@ -35,7 +35,7 @@ async def main() -> None:
         # --8<-- [start:message_send]
         config = ClientConfig(streaming=False)
         client = await create_client(agent=public_card, client_config=config)
-        print('\nNon-streaming A2AClient initialized.')
+        print('\nNon-streaming Client initialized.')
 
         message = new_text_message('Say hello.', role=Role.ROLE_USER)
         request = SendMessageRequest(message=message)
@@ -51,7 +51,7 @@ async def main() -> None:
         streaming_client = await create_client(
             agent=public_card, client_config=streaming_config
         )
-        print('\nStreaming A2AClient initialized.')
+        print('\nStreaming Client initialized.')
 
         streaming_response = streaming_client.send_message(request)
 
