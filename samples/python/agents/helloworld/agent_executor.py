@@ -1,4 +1,8 @@
-from a2a.helpers import new_task, new_text_artifact, new_text_message
+from a2a.helpers import (
+    new_task_from_user_message,
+    new_text_artifact,
+    new_text_message,
+)
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.types.a2a_pb2 import (
@@ -37,8 +41,8 @@ class HelloWorldAgentExecutor(AgentExecutor):
         event_queue: EventQueue,
     ) -> None:
         """Execute the agent process and enqueue the final response."""
-        task = new_task(
-            context.task_id, context.context_id, TaskState.TASK_STATE_SUBMITTED
+        task = context.current_task or new_task_from_user_message(
+            context.message
         )
         await event_queue.enqueue_event(task)
 

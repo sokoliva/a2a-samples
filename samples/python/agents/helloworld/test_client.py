@@ -4,6 +4,7 @@ from a2a.client import A2ACardResolver, ClientConfig, create_client
 from a2a.helpers import display_agent_card, new_text_message
 from a2a.types.a2a_pb2 import (
     GetExtendedAgentCardRequest,
+    Role,
     SendMessageRequest,
 )
 from a2a.utils.constants import AGENT_CARD_WELL_KNOWN_PATH
@@ -36,7 +37,7 @@ async def main() -> None:
         client = await create_client(agent=public_card, client_config=config)
         print('\nNon-streaming A2AClient initialized.')
 
-        message = new_text_message('Say hello.')
+        message = new_text_message('Say hello.', role=Role.ROLE_USER)
         request = SendMessageRequest(message=message)
 
         print('Response:')
