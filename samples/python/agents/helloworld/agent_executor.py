@@ -1,3 +1,4 @@
+from a2a.helpers import new_task, new_text_artifact, new_text_message
 from a2a.server.agent_execution import AgentExecutor, RequestContext
 from a2a.server.events import EventQueue
 from a2a.types.a2a_pb2 import (
@@ -6,9 +7,6 @@ from a2a.types.a2a_pb2 import (
     TaskStatus,
     TaskStatusUpdateEvent,
 )
-from a2a.utils.artifact import new_text_artifact
-from a2a.utils.message import new_agent_text_message
-from a2a.utils.task import new_task
 
 
 # --8<-- [start:HelloWorldAgent]
@@ -39,7 +37,9 @@ class HelloWorldAgentExecutor(AgentExecutor):
         event_queue: EventQueue,
     ) -> None:
         """Execute the agent process and enqueue the final response."""
-        task = context.current_task or new_task(context.message)
+        task = new_task(
+            context.task_id, context.context_id, TaskState.TASK_STATE_SUBMITTED
+        )
         await event_queue.enqueue_event(task)
 
         await event_queue.enqueue_event(
@@ -48,7 +48,7 @@ class HelloWorldAgentExecutor(AgentExecutor):
                 context_id=context.context_id,
                 status=TaskStatus(
                     state=TaskState.TASK_STATE_WORKING,
-                    message=new_agent_text_message('Processing request...'),
+                    message=new_text_message('Processing request...'),
                 ),
             )
         )
