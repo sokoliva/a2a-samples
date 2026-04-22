@@ -12,7 +12,7 @@ from a2a.utils.constants import AGENT_CARD_WELL_KNOWN_PATH
 
 async def main() -> None:
     # --8<-- [start:A2ACardResolver]
-    base_url = 'http://localhost:9999'
+    base_url = 'http://127.0.0.1:9999'
 
     async with httpx.AsyncClient() as httpx_client:
         # Initialize A2ACardResolver

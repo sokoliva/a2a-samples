@@ -51,7 +51,7 @@ if __name__ == '__main__':
         supported_interfaces=[
             AgentInterface(
                 protocol_binding='JSONRPC',
-                url='http://localhost:9999',
+                url='http://127.0.0.1:9999',
             )
         ],
         skills=[skill],  # Only the basic skill for the public card
@@ -72,7 +72,7 @@ if __name__ == '__main__':
         supported_interfaces=[
             AgentInterface(
                 protocol_binding='JSONRPC',
-                url='http://localhost:9999',
+                url='http://127.0.0.1:9999',
             )
         ],
         skills=[
